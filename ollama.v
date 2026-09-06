@@ -20,12 +20,24 @@ fn parse_first_model_name(body string) !string {
 	}
 	obj := val.as_map()
 	models_val := obj['models'] or { return error('no "models" field in Ollama response') }
+	// json2's as_array()/as_map() silently coerce instead of failing
+	// (null becomes [null]), so types must be checked before converting,
+	// or malformed responses land in unrelated error messages.
+	if models_val !is []json2.Any {
+		return error('"models" must be an array')
+	}
 	models := models_val.as_array()
 	if models.len == 0 {
 		return error('Ollama has no models pulled (try: ollama pull llama3.2:1b)')
 	}
+	if models[0] !is map[string]json2.Any {
+		return error('a model entry is not an object')
+	}
 	first := models[0].as_map()
 	name_val := first['name'] or { return error('a model entry has no "name" field') }
+	if name_val !is string {
+		return error('a model entry "name" is not a string')
+	}
 	return name_val.str()
 }
 
