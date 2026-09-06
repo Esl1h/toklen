@@ -58,6 +58,12 @@ fn main() {
 	}
 
 	tokens := resp.usage.input_tokens
+	if tokens == 0 {
+		// a real file is at least one token; zero means the response
+		// carried no usage and the count (and cost table below) is not
+		// real.
+		eprintln('warning: provider reported zero input tokens; the response may not have carried usage')
+	}
 	println('${path}: ${tokens} tokens (via ${label})')
 	println('')
 	println('Estimated cost if this were input to:')
@@ -65,7 +71,11 @@ fn main() {
 		c := vai.cost(m, vai.Usage{
 			input_tokens: tokens
 		})
-		println('  ${m}: \$${c.input:.6f}')
+		if c.unknown {
+			println('  ${m}: unpriced (not in vai cost table)')
+		} else {
+			println('  ${m}: \$${c.input:.6f}')
+		}
 	}
 	println('')
 	println("(input-only estimate; assumes ${label}'s tokenizer is a reasonable proxy for these models' tokenizers, which isn't exact across model families)")
