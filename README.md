@@ -44,7 +44,7 @@ The request sent is `max_tokens: 1`, so this costs (or takes) about as little as
 
 ## Scope
 
-No dedicated token-counting endpoint is called (`vai` doesn't have `Provider.count_tokens()` yet — see its own AGENTS.md). `toklen` gets a real count the only way currently available: a real completion call, reading `usage.input_tokens` back from whichever provider answered. The cost table is explicitly an estimate, not a guarantee: different model families use different tokenizers, so a count from Ollama's Llama tokenizer applied to Anthropic's pricing is an approximation, not a promise. This is stated in the tool's own output, not just this README.
+No dedicated token-counting endpoint is called (`vai` doesn't have `Provider.count_tokens()` yet, see its own AGENTS.md). `toklen` gets a real count the only way currently available: a real completion call, reading `usage.input_tokens` back from whichever provider answered. The cost table is explicitly an estimate, not a guarantee: different model families use different tokenizers, so a count from Ollama's Llama tokenizer applied to Anthropic's pricing is an approximation, not a promise. This is stated in the tool's own output, not just this README.
 
 ## Development
 
@@ -54,7 +54,7 @@ make test
 make fmt
 ```
 
-See AGENTS.md for a real V compiler bug this project ran into: on a machine where a checkout of `vai` itself sits next to this repo, `v test .` fails to resolve `vai`'s submodules (`vai.anthropic`, `vai.openai`) even though a normal build (`make build`) works fine. If `make test` fails with `unknown type` errors mentioning `vai.anthropic` or `vai.openai`, that's almost certainly this, not a real problem with the code — `make build` and a manual run are the way to verify in that case.
+See AGENTS.md for a real V compiler bug this project ran into: on a machine where a checkout of `vai` itself sits next to this repo, `v test .` fails to resolve `vai`'s submodules (`vai.anthropic`, `vai.openai`) even though a normal build (`make build`) works fine. If `make test` fails with `unknown type` errors mentioning `vai.anthropic` or `vai.openai`, that's almost certainly this, not a real problem with the code, `make build` and a manual run are the way to verify in that case.
 
 ## License
 
