@@ -42,9 +42,9 @@ toklen path/to/file.md
 path/to/file.md: 532 tokens (via Ollama (llama3.2:1b))
 
 Estimated cost if this were input to:
-  claude-opus-5: $0.002660
-  claude-sonnet-5: $0.001064
-  claude-haiku-4-5: $0.000532
+  claude-opus-5-5: $0.002128
+  claude-sonnet-5-5: $0.001064
+  claude-haiku-5-5: $0.000053
   claude-fable-5-1: $0.005320
 
 (input-only estimate; assumes Ollama (llama3.2:1b)'s tokenizer is a reasonable

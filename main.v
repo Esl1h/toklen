@@ -5,7 +5,7 @@ import vai
 import vai.anthropic
 import vai.openai
 
-const anthropic_models = ['claude-opus-5', 'claude-sonnet-5', 'claude-haiku-4-5', 'claude-fable-5-1']!
+const anthropic_models = ['claude-opus-5-5', 'claude-sonnet-5-5', 'claude-haiku-5-5', 'claude-fable-5-1']!
 
 fn main() {
 	if os.args.len < 2 {
@@ -28,7 +28,7 @@ fn main() {
 
 	anthropic_key := os.getenv('ANTHROPIC_API_KEY')
 	if anthropic_key != '' {
-		model := 'claude-sonnet-5'
+		model := 'claude-sonnet-5-5'
 		p := anthropic.Provider{
 			api_key: anthropic_key
 		}
