@@ -8,6 +8,15 @@ This is the first real consumer of [`vai`](https://github.com/Esl1h/vai)'s `Prov
 
 ## Install
 
+Prebuilt binaries for Linux (amd64) and macOS (arm64) are attached to each [release](https://github.com/Esl1h/toklen/releases) (use `toklen-macos-arm64` on a Mac):
+
+```sh
+curl -fsSLo ~/.local/bin/toklen https://github.com/Esl1h/toklen/releases/latest/download/toklen-linux-amd64
+chmod +x ~/.local/bin/toklen
+```
+
+Or build from source:
+
 ```sh
 v install https://github.com/Esl1h/vai   # dependency
 git clone https://github.com/Esl1h/toklen
