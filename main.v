@@ -19,7 +19,7 @@ fn main() {
 	}
 
 	req := vai.Request{
-		messages: [vai.user(content)]
+		messages:   [vai.user(content)]
 		max_tokens: 1
 	}
 
