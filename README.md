@@ -1,5 +1,7 @@
 # toklen
 
+[![CI](https://github.com/Esl1h/toklen/actions/workflows/ci.yml/badge.svg)](https://github.com/Esl1h/toklen/actions/workflows/ci.yml)
+
 A [V](https://vlang.io) CLI that counts the real tokens in a file by sending it to whichever LLM is actually available, then estimates what it would cost across Anthropic's current models.
 
 This is the first real consumer of [`vai`](https://github.com/Esl1h/vai)'s `Provider.complete()` against a live endpoint, not a mock: it exists to prove the module works end to end before building anything bigger on top of it.
